@@ -33,11 +33,11 @@ void insertAtLast(struct Node** head,int val){
 }
 void insertAtPosition(struct Node** head,int val,int pos){
     struct Node* newNode=createNode(val);
-    if(*head==NULL && pos==0){
+    if(*head==NULL && pos==1){
         *head=newNode;
         return;
     }
-    if(*head==NULL && pos>0){
+    if(*head==NULL && pos>1){
         printf("Invalid position\n");
         return;
     }
@@ -52,8 +52,12 @@ void insertAtPosition(struct Node** head,int val,int pos){
         temp=temp->next;
         i++;
     }
-    if(temp==NULL || temp->next==NULL){
+    if(temp==NULL ){
         printf("ENTER A VALID POSITION \n");
+        return;
+    }
+    if(temp->next==NULL){
+        temp->next=newNode;
         return;
     }
     newNode->next=temp->next;
